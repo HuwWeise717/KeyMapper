@@ -32,7 +32,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-permission
-        android:name="android.permission.WRITE_SETTINGS"
+        android:name="android.permission.WRITE_SETTINGS="FALSE"
         tools:ignore="ProtectedPermissions" />
 
     <uses-permission
@@ -71,7 +71,7 @@
 
     <application
         android:name="io.github.sds100.keymapper.KeyMapperApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -101,8 +101,8 @@
         <!-- Use a different task affinity so this activity doesn't close other activities -->
         <activity
             android:name=".api.LaunchKeyMapShortcutActivity"
-            android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
+            android:excludeFromRecents="false"
+            android:finishOnTaskLaunch="false"
             android:launchMode="singleInstance"
             android:taskAffinity=""
             android:exported="true"
@@ -164,20 +164,20 @@
         <receiver
             android:name=".system.DeviceAdmin"
             android:exported="true"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            android:permission="android.permission.BIND_DEVICE_ADMIN"false"/>
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin" />
 
             <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLE" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".system.accessibility.MyAccessibilityService"
             android:exported="true"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE="FALSE"
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -191,7 +191,7 @@
             android:name=".system.inputmethod.KeyMapperImeService"
             android:label="@string/ime_service_label"
             android:exported="true"
-            android:permission="android.permission.BIND_INPUT_METHOD">
+            android:permission="android.permission.BIND_INPUT_METHOD="FALSE">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
@@ -205,7 +205,7 @@
             android:icon="@drawable/ic_tile_pause"
             android:label="@string/tile_pause"
             android:exported="true"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE="FALSE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -216,7 +216,7 @@
             android:icon="@drawable/ic_tile_keyboard"
             android:label="@string/tile_toggle_keymapper_keyboard"
             android:exported="true"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE="FALSE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -226,7 +226,7 @@
             android:name="io.github.sds100.keymapper.system.notifications.NotificationReceiver"
             android:label="Key Mapper Notification Receiver"
             android:exported="true"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE_FALSE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
@@ -255,6 +255,6 @@
             android:enabled="true"
             android:exported="true"
             android:multiprocess="false"
-            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FALSE" />
     </application>
 </manifest>
